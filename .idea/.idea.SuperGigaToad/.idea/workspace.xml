@@ -7,12 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7756c25-4664-4857-8b55-04ab49fc6b0d" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a7756c25-4664-4857-8b55-04ab49fc6b0d" name="Changes" comment="Jetbrains Rider Configuration added">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SuperGigaToad/Commands/PlayCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SuperGigaToad/Commands/PlayCommand.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +114,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705850300485</updated>
-      <workItem from="1705850301575" duration="5129000" />
+      <workItem from="1705850301575" duration="5659000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <option name="closed" value="true" />
@@ -135,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705855486219</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Jetbrains Rider Configuration added">
+      <option name="closed" value="true" />
+      <created>1705855581730</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705855581730</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +151,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initialization" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Jetbrains Rider Configuration added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jetbrains Rider Configuration added" />
   </component>
 </project>

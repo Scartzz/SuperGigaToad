@@ -67,6 +67,17 @@ public class PlayCommand : ApplicationCommandModule
 
         return channel;
     }
+    private async Task<DiscordGuild?> GetVoiceGuildOfAuthor(InteractionContext ctx)
+    {
+        if (ctx.Member?.VoiceState?.Guild is null)  
+        {
+            await ctx.CreateResponseAsync(Error("Du befindest dich auf keinem Server!"));
+            await DeleteAfter(ctx, 5000);
+            return null;
+        }
+
+        return ctx.Member.VoiceState.Guild;
+    }
 
     [SlashCommand("play", "Spielt Musik ab!")]
     public async Task Play(InteractionContext ctx, [Option("Inhalt", "Link oder Suchwort")] string content)
@@ -97,5 +108,101 @@ public class PlayCommand : ApplicationCommandModule
 
         await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(Info($"Spiele jetzt {track.Title}!")));
         await DeleteAfter(ctx, 10000);
+    }
+
+    [SlashCommand("pause", "Pausiert die Musik!")]
+    public async Task Pause(InteractionContext ctx)
+    {
+        var guild = await GetVoiceGuildOfAuthor(ctx);
+        if (guild is null)
+            return;
+        
+        var node = await GetNode(ctx);
+        if (node is null)
+            return;
+
+        var conn = node.GetGuildConnection(guild);
+
+        if (conn is null)
+        {
+            await ctx.CreateResponseAsync(Error("Der Bot spielt aktuell keine Musik ab!"));
+            await DeleteAfter(ctx, 5000);
+            return;
+        }
+        
+        await conn.PauseAsync();
+        await ctx.CreateResponseAsync(Info("Alles klar! Pausiert!"));
+    }
+
+    [SlashCommand("resume", "Spielt die Musik weiter ab!")]
+    public async Task Resume(InteractionContext ctx)
+    {
+        var guild = await GetVoiceGuildOfAuthor(ctx);
+        if (guild is null)
+            return;
+        
+        var node = await GetNode(ctx);
+        if (node is null)
+            return;
+
+        var conn = node.GetGuildConnection(guild);
+
+        if (conn is null)
+        {
+            await ctx.CreateResponseAsync(Error("Der Bot spielt aktuell keine Musik ab!"));
+            await DeleteAfter(ctx, 5000);
+            return;
+        }
+        
+        await conn.ResumeAsync();
+        await ctx.CreateResponseAsync(Info("Alles klar! Spiele weiter!"));
+    }
+
+    [SlashCommand("stop", "Stoppt die Musik!")]
+    public async Task Stop(InteractionContext ctx)
+    {
+        var guild = await GetVoiceGuildOfAuthor(ctx);
+        if (guild is null)
+            return;
+        
+        var node = await GetNode(ctx);
+        if (node is null)
+            return;
+
+        var conn = node.GetGuildConnection(guild);
+
+        if (conn is null)
+        {
+            await ctx.CreateResponseAsync(Error("Der Bot spielt aktuell keine Musik ab!"));
+            await DeleteAfter(ctx, 5000);
+            return;
+        }
+        
+        await conn.StopAsync();
+        await ctx.CreateResponseAsync(Info("Alles klar! Stop!"));
+    }
+
+    [SlashCommand("leave", "Verlässt den Kanal!")]
+    public async Task Leave(InteractionContext ctx)
+    {
+        var guild = await GetVoiceGuildOfAuthor(ctx);
+        if (guild is null)
+            return;
+        
+        var node = await GetNode(ctx);
+        if (node is null)
+            return;
+
+        var conn = node.GetGuildConnection(guild);
+
+        if (conn is null)
+        {
+            await ctx.CreateResponseAsync(Error("Der Bot spielt aktuell keine Musik ab!"));
+            await DeleteAfter(ctx, 5000);
+            return;
+        }
+        
+        await conn.DisconnectAsync();
+        await ctx.CreateResponseAsync(Info("Alles klar! Tschüss :("));
     }
 }
