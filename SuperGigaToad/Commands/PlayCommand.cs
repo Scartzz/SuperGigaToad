@@ -132,6 +132,7 @@ public class PlayCommand : ApplicationCommandModule
         
         await conn.PauseAsync();
         await ctx.CreateResponseAsync(Info("Alles klar! Pausiert!"));
+        await DeleteAfter(ctx, 5000);
     }
 
     [SlashCommand("resume", "Spielt die Musik weiter ab!")]
@@ -156,6 +157,7 @@ public class PlayCommand : ApplicationCommandModule
         
         await conn.ResumeAsync();
         await ctx.CreateResponseAsync(Info("Alles klar! Spiele weiter!"));
+        await DeleteAfter(ctx, 5000);
     }
 
     [SlashCommand("stop", "Stoppt die Musik!")]
@@ -180,6 +182,7 @@ public class PlayCommand : ApplicationCommandModule
         
         await conn.StopAsync();
         await ctx.CreateResponseAsync(Info("Alles klar! Stop!"));
+        await DeleteAfter(ctx, 5000);
     }
 
     [SlashCommand("leave", "Verlässt den Kanal!")]
@@ -204,5 +207,6 @@ public class PlayCommand : ApplicationCommandModule
         
         await conn.DisconnectAsync();
         await ctx.CreateResponseAsync(Info("Alles klar! Tschüss :("));
+        await DeleteAfter(ctx, 5000);
     }
 }
