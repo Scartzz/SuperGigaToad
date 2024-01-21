@@ -1,6 +1,9 @@
 ﻿using System.Globalization;
 using System.Text;
 using DSharpPlus;
+using DSharpPlus.Interactivity;
+using DSharpPlus.Interactivity.Enums;
+using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Lavalink;
 using DSharpPlus.Net;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +48,11 @@ await Host.CreateDefaultBuilder(args)
             });
 
             dc.UseLavalink();
+            dc.UseInteractivity(new InteractivityConfiguration()
+            {
+                PollBehaviour = PollBehaviour.KeepEmojis,
+                Timeout = TimeSpan.FromSeconds(120),
+            });
             
             dc.AddExtension(new MusicExtension(serviceProvider));
             dc.AddExtension(new LogExtension(serviceProvider));

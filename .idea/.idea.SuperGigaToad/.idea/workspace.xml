@@ -7,9 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7756c25-4664-4857-8b55-04ab49fc6b0d" name="Changes" comment="Added few more Commands">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SuperGigaToad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SuperGigaToad/Commands/PlayCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SuperGigaToad/Commands/PlayCommand.cs" afterDir="false" />
+    <list default="true" id="a7756c25-4664-4857-8b55-04ab49fc6b0d" name="Changes" comment="Added DeleteAfter">
+      <change beforePath="$PROJECT_DIR$/SuperGigaToad/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SuperGigaToad/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +18,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/890aa1c0f2c24ba59c3ea5cf119f9ba717600/7e/ea430f7a/DiscordClientExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e9b41a701ea74e71a9443b6023a7bbfb15400/45/94af3f32/BaseContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nikla/RiderProjects/SuperGigaToad/SuperGigaToad/Commands/PlayCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nikla/RiderProjects/SuperGigaToad/SuperGigaToad/Commands/PlayCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nikla/RiderProjects/SuperGigaToad/SuperGigaToad/Commands/PlayCommand.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -115,7 +115,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705850300485</updated>
-      <workItem from="1705850301575" duration="5685000" />
+      <workItem from="1705850301575" duration="5836000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <option name="closed" value="true" />
@@ -149,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705856127279</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added DeleteAfter">
+      <option name="closed" value="true" />
+      <created>1705856154284</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705856154284</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +170,7 @@
     <MESSAGE value="Update" />
     <MESSAGE value="Jetbrains Rider Configuration added" />
     <MESSAGE value="Added few more Commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added few more Commands" />
+    <MESSAGE value="Added DeleteAfter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DeleteAfter" />
   </component>
 </project>
