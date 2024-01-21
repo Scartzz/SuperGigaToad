@@ -47,25 +47,33 @@ public class PlayCommand : ApplicationCommandModule
         var node = lava.ConnectedNodes.Values.First();
         return node;
     }
-
-    [SlashCommand("play", "Spielt Musik ab!")]
-    public async Task Play(InteractionContext ctx, [Option("Inhalt", "Link oder Suchwort")] string content)
+    private async Task<DiscordChannel?> GetVoiceChannelOfAuthor(InteractionContext ctx)
     {
         if (ctx.Member?.VoiceState?.Channel is null)  
         {
-            await ctx.CreateResponseAsync("You are not in a voice channel.");
+            await ctx.CreateResponseAsync(Error("Du befindest dich in keinem Kanal!"));
             await DeleteAfter(ctx, 5000);
-            return;
+            return null;
         }
 
         var channel = ctx.Member.VoiceState.Channel;
         
         if (channel.Type != ChannelType.Voice)
         {
-            await ctx.CreateResponseAsync("Not a valid voice channel.");
+            await ctx.CreateResponseAsync(Error("Du befindest dich in keinem Voice-Kanal!"));
             await DeleteAfter(ctx, 5000);
-            return;
+            return null;
         }
+
+        return channel;
+    }
+
+    [SlashCommand("play", "Spielt Musik ab!")]
+    public async Task Play(InteractionContext ctx, [Option("Inhalt", "Link oder Suchwort")] string content)
+    {
+        var channel = await GetVoiceChannelOfAuthor(ctx);
+        if (channel is null)
+            return;
 
         var node = await GetNode(ctx);
         if (node is null)
@@ -73,12 +81,12 @@ public class PlayCommand : ApplicationCommandModule
         
         var conn = await node.ConnectAsync(channel);
         
-        await ctx.CreateResponseAsync($"Joined {channel.Name}!");
+        await ctx.CreateResponseAsync(Info($"Ich bin dem Channel {channel.Name} beigetreten!"));
         
         var loadResult = await node.Rest.GetTracksAsync(content);                       
         if (loadResult.LoadResultType is LavalinkLoadResultType.LoadFailed or LavalinkLoadResultType.NoMatches)
         {
-            await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent($"Track search failed for {content}."));
+            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(Error($"Leider konnte zu '{content}' nichts gefunden werden.")));
             await DeleteAfter(ctx, 5000);
             return;
         }
@@ -87,7 +95,7 @@ public class PlayCommand : ApplicationCommandModule
         
         await conn.PlayAsync(track);
 
-        await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent($"Now playing {track.Title}!"));
+        await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(Info($"Spiele jetzt {track.Title}!")));
         await DeleteAfter(ctx, 10000);
     }
 }
